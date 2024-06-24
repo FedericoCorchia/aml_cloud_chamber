@@ -1,5 +1,6 @@
 import os
 import sys
+import json
 from keras.models import Model, Sequential
 from keras.layers import Dense, Input, Conv2D, MaxPooling2D, Flatten, Dropout, RandomFlip, RandomRotation
 from keras.preprocessing import image
@@ -51,3 +52,8 @@ model.compile(optimizer="adam", loss="binary_crossentropy", metrics=[Recall()])
 
 #training
 history = model.fit(trainGenerator, steps_per_epoch=100, epochs=50, validation_data=testGenerator, validation_steps=50, verbose=1)
+
+#saving history to file
+historyDict = history.history
+with open("{}/../historyDict.json".format(dataDir), "w") as historyDictFile:
+  json.dump(historyDict, historyDictFile)
