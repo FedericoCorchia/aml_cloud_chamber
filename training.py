@@ -53,6 +53,9 @@ model.compile(optimizer="adam", loss="binary_crossentropy", metrics=[Recall()])
 #training
 history = model.fit(trainGenerator, steps_per_epoch=100, epochs=50, validation_data=testGenerator, validation_steps=50, verbose=1)
 
+#model saving
+model.save("savedModel/model")
+
 #saving history to file
 historyDict = history.history
 with open("{}/../historyDict.json".format(dataDir), "w") as historyDictFile:
