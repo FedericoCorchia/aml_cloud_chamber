@@ -18,7 +18,7 @@ validImageDataGenerator = image.ImageDataGenerator(rescale=1./255)
 
 #generators
 trainGenerator = trainImageDataGenerator.flow_from_directory(trainDir, target_size=(768, 432), color_mode="grayscale", batch_size=30, class_mode="binary")
-trainClassIndices = trainGenerator.class_indices #checks that signal class has index 1 as metrics Recall refers by default to the class with index 1
+trainClassIndices = trainGenerator.class_indices #checks that signal class has index 1 as metrics Precision and Recall refer by default to the class with index 1
 print("trainClassIndices:", trainClassIndices)
 validGenerator = validImageDataGenerator.flow_from_directory(validDir, target_size=(768, 432), color_mode="grayscale", batch_size=30, class_mode="binary")
 validClassIndices = validGenerator.class_indices
@@ -59,5 +59,5 @@ model.summary()
 
 #saving history to file
 historyDict = history.history
-with open("{}/../historyDict.json".format(dataDir), "w") as historyDictFile:
+with open("historyDict.json", "w") as historyDictFile:
   json.dump(historyDict, historyDictFile)
