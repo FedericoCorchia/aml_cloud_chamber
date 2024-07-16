@@ -5,7 +5,7 @@ This project proposes a Convolutional Neural Network (CNN) to recognise traces l
 This CNN may be run in two ways:
 
 - by running directly the Python scripts on your device;
-- by using the provided notebook, whose code is the very same of the Python scripts (but for just minor specificities of the notebook environment, e.g. the dataset imports and the ```sys.argv``` command line inputs being replaced by simple strings able to be edited on the fly by the user).
+- by using the provided notebook ```cloud_chamber_notebook.ipynb```, whose code is the very same of the Python scripts (but for just minor specificities of the notebook environment, e.g. the dataset imports and the ```sys.argv``` command line inputs being replaced by simple strings able to be edited on the fly by the user).
 
 The first way is recommended if you have your own GPUs available (e.g. you have access to a cluster with GPU-equipped nodes), while the second one is recommended if you do not have such an access and/or you prefer to run on resources like Google Colab.
 
