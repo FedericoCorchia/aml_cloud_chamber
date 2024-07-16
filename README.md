@@ -49,9 +49,11 @@ Frames are then split into a training set (60% of the images), a validation one 
 --background
 ``` 
 
-Below are an example of a background image and one of a signal image. The traces appearing in both images are left by other particles (e.g. electrons), not of our interest in this study.
+Here are an example of a background image (above) and one of a signal image (below). The traces appearing in both images are left by other particles (e.g. electrons), not of our interest in this study.
 
-TO DO: ADD IMG. BACKGROUND
+![Background Frame](https://github.com/FedericoCorchia/aml_cloud_chamber/blob/1d2501cf247a9a0b504c3629ca7a08df9518cf69/scene22039.png)
+
+![Signal Frame](https://github.com/FedericoCorchia/aml_cloud_chamber/blob/1d2501cf247a9a0b504c3629ca7a08df9518cf69/scene49267.png)
 
 TO DO: ADD IMG. SIGNAL
 
@@ -68,7 +70,7 @@ The model is then trained for 20 epochs and saved in the standard Tensorflow _Sa
 ## Performance
 With the final CNN setup, in the test set very good recall is observed (about 90%) and also good precision is noticed (above 80%), meaning that the CNN is indeed able to recognise the vast majority of alpha particle traces frames and also to keep the selection it makes with good purity. For its behaviour over training epochs, it can be observed in the plot below (all trainings show the same general behaviour) that validation performance tends to be better than the training one for loss and in a relevant way for recall, this is because of dropout being used. Loss tends to follow a path of decrease, precision rises quickly at the beginning and stays high, while recall tends to increase but with fluctuations between epochs, anyway tending to a more stable equilibrium towards the end. For runtime performance, the CNN training was run on both NVIDIA V100 GPUs (on the CNAF-HPC cluster at INFN-CNAF in Bologna) and T4 GPUs (on Google Colab), using in both cases one GPU: each epoch takes between 70 s and 130 s on the V100 GPUs and between 45 s and 70 s on the T4 ones.
 
-ADD PLOT.
+![Training Performance Plot](https://github.com/FedericoCorchia/aml_cloud_chamber/blob/1d2501cf247a9a0b504c3629ca7a08df9518cf69/plot.png)
 
 
 ## How This System May Be Used in Production for Research
