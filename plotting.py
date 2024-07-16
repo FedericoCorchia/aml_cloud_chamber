@@ -2,29 +2,32 @@ import sys
 import json
 import matplotlib.pyplot as plt
 
+#load training performance metrics from json file
 historyDictFilePath = str(sys.argv[1])
 with open(historyDictFilePath, "r") as historyDictFile:
   historyDict = json.load(historyDictFile)
 plotOutputFilePath = str(sys.argv[2])
 
-epochs = int(sys.argv[3])
+#plotting
+epochs = 20
 epochRange = range(1,epochs+1)
 
-historyLoss = historyDict["loss"]
-historyPrecision = historyDict["precision"]
-historyRecall = historyDict["recall"]
-historyValLoss = historyDict["val_loss"]
-historyValPrecision = historyDict["val_precision"]
-historyValRecall = historyDict["val_recall"]
+historyTrainLoss = historyDict["loss"]
+historyTrainPrecision = historyDict["precision"]
+historyTrainRecall = historyDict["recall"]
+historyValidLoss = historyDict["val_loss"]
+historyValidPrecision = historyDict["val_precision"]
+historyValidRecall = historyDict["val_recall"]
 
-plt.plot(epochRange, historyLoss, color="r", label="loss", linestyle="--")
-plt.plot(epochRange, historyPrecision, color="g", label="precision", linestyle="--")
-plt.plot(epochRange, historyRecall, color="b", label="recall", linestyle="--")
-plt.plot(epochRange, historyValLoss, color="r", label="val_loss")
-plt.plot(epochRange, historyValPrecision, color="g", label="val_precision")
-plt.plot(epochRange, historyValRecall, color="b", label="val_recall")
+plt.plot(epochRange, historyTrainLoss, color="r", label="Train Loss", linestyle="--")
+plt.plot(epochRange, historyTrainPrecision, color="g", label="Train Precision", linestyle="--")
+plt.plot(epochRange, historyTrainRecall, color="b", label="Train Recall", linestyle="--")
+plt.plot(epochRange, historyValidLoss, color="r", label="Valid Loss")
+plt.plot(epochRange, historyValidPrecision, color="g", label="Valid Precision")
+plt.plot(epochRange, historyValidRecall, color="b", label="Valid Recall")
 
 plt.xlabel("Epoch")
+plt.xticks(epochRange)
 plt.ylabel("Value")
 plt.title("Training Performance")
 plt.legend()
