@@ -6,7 +6,7 @@ from keras.layers import Dense, Input, Conv2D, MaxPooling2D, Flatten, Dropout, R
 from keras.preprocessing import image
 from keras.metrics import Precision, Recall
 
-#definition of folders with training and valid samples
+#definition of folders with training and validation samples
 dataDir = str(sys.argv[1])
 trainDir = os.path.join(dataDir, "train")
 validDir = os.path.join(dataDir, "valid")
