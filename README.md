@@ -55,8 +55,6 @@ Here are an example of a background image (above) and one of a signal image (bel
 
 ![Signal Frame](https://github.com/FedericoCorchia/aml_cloud_chamber/blob/1d2501cf247a9a0b504c3629ca7a08df9518cf69/scene49267.png)
 
-TO DO: ADD IMG. SIGNAL
-
 ## Training
 
 The training script is ```training.py```. Tu run it: ```python3 training.py <path_to_dataset_directory>```
@@ -71,7 +69,6 @@ The model is then trained for 20 epochs and saved in the standard Tensorflow _Sa
 With the final CNN setup, in the test set very good recall is observed (about 90%) and also good precision is noticed (above 80%), meaning that the CNN is indeed able to recognise the vast majority of alpha particle traces frames and also to keep the selection it makes with good purity. For its behaviour over training epochs, it can be observed in the plot below (all trainings show the same general behaviour) that validation performance tends to be better than the training one for loss and in a relevant way for recall, this is because of dropout being used. Loss tends to follow a path of decrease, precision rises quickly at the beginning and stays high, while recall tends to increase but with fluctuations between epochs, anyway tending to a more stable equilibrium towards the end. For runtime performance, the CNN training was run on both NVIDIA V100 GPUs (on the CNAF-HPC cluster at INFN-CNAF in Bologna) and T4 GPUs (on Google Colab), using in both cases one GPU: each epoch takes between 70 s and 130 s on the V100 GPUs and between 45 s and 70 s on the T4 ones.
 
 ![Training Performance Plot](https://github.com/FedericoCorchia/aml_cloud_chamber/blob/1d2501cf247a9a0b504c3629ca7a08df9518cf69/plot.png)
-
 
 ## How This System May Be Used in Production for Research
 As shown, this system is intended to locate traces of alpha particles in cloud chamber footage. Instead of having a human manually inspect the footage, this programme does it automatically for them, returning just the meaningful frames ready for study. An automatical workflow can be devised where footage is recorded of the cloud chamber, frames are automatically extracted (even, if this precision is needed for the study, at a higher rate than the 6 frames per second used to build the dataset for this project, up to the actual recording rate of the footage - 30 frames per second for the footage used for the dataset of this project) and then passed to the trained model, which then selects meaningful frames and marks them. The experimenter would be only left with useful frames with alpha traces for their study. This idea may be potentially expanded to traces left by other particle types.
