@@ -32,5 +32,6 @@ plt.ylabel("Value")
 plt.title("Training Performance")
 plt.legend()
 
+#saving plot to file
 plt.savefig(plotOutputFilePath)
 
